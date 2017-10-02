@@ -3,14 +3,14 @@
 from abscplane import AbsComplexPlane
 
 class ListComplexPlane(AbsComplexPlane):
-    #list of lists in plane structure
+    #initializing the attributes
     def __init__(self, xmin, xmax, xlen, ymin, ymax, ylen):
-        self.xmin = xmin
-        self.xmax = xmax
-        self.xlen = xlen
-        self.ymin = ymin
-        self.ymax = ymax
-        self.ylen = ylen
+        self.xmin = float(xmin)
+        self.xmax = float(xmax)
+        self.xlen = int(xlen)
+        self.ymin = float(ymin)
+        self.ymax = float(ymax)
+        self.ylen = int(ylen)
         self.plane = __create_plane(self.xmin, self.xmax, self.xlen, self.ymin, self.ymax, self.ylen)
         self.fs = []
         
@@ -36,8 +36,13 @@ class ListComplexPlane(AbsComplexPlane):
         while i in (1...ylen):
             ypoints.append(ymin + i*dy)
         
+        #create plane
+        plane = []
         
-        
+        for x in xpoints:
+            for y in ypoints:
+                plane.append([x + ])
+                
         
     
     def refresh(self):
