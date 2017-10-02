@@ -11,6 +11,9 @@
 
 import cplane
 
+def f(z):
+    return z+2
+
 def test_cplane():
     result=cplane.ListComplexPlane(0,2,2,0,4,2)
     correct=[[0,4j],[2,2+4j]]
@@ -38,7 +41,5 @@ def test_refresh():
     result.refresh()
     correct=[[0,4j],[2,2+4j]]
     assert result==correct
-
-
     
 
