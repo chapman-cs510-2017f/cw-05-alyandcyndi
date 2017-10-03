@@ -47,7 +47,6 @@ class ListComplexPlane(AbsComplexPlane):
         plane = []
         
         for x in xpoints:
-            plane.append([])
             for y in ypoints:
                 plane.append([x + y*1j])
         print(plane)
@@ -56,19 +55,17 @@ class ListComplexPlane(AbsComplexPlane):
         
     
     def refresh(self):
-        
-        x = self.xmin
-        y = self.ymin
-        xl = self.xlen
-        yl = self.ylen
-        self.plane = []
+
+        self.plane = self.__create_plane(self, xmin, xmax, xlen, ymin, ymax, ylen)
         self.fs = []
+
+    def apply(self, f):
         
-        dx = (xmax - x)/(xl-1)
-        dy = (ymax - y)/(yl-1)
-        
-        
-    #def apply(self, f):
+        self.fs.append(f)
+        self.f = f
+        for i in range(self.xlen):
+            for j in range(self.ylen):
+                self.plane[i][j] = f(self.plane[i][j])
         
         
     def zoom(self,xmin,xmax,xlen,ymin,ymax,ylen):
@@ -81,4 +78,8 @@ class ListComplexPlane(AbsComplexPlane):
         self.ylen = ylen
         
         self.plane = self.__create_plane(self.xmin, self.xmax, self.xlen, self.ymin, self.ymax, self.ylen)
-        self.fs = []
+        
+        for f in self.fs:
+            self.apply(f)
+            
+        return self.plane

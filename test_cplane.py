@@ -11,21 +11,22 @@
 
 import cplane
 
-def f(z):
-    return z+2
 
 def test_cplane():
-    result=cplane.ListComplexPlane(0,2,2,0,4,2)
-    correct=[[0,4j],[2,2+4j]]
+    result=cplane.ListComplexPlane(0,10,2,0,8,2)
+    correct=[[0j], [8j], [(10+0j)], [(10+8j)]]
     assert result==correct
     
+def f(z):
+    return z+1
+    
 def test_apply():
-    result=cplane.ListComplexPlane(0,2,2,0,4,2)
-    correct=[[0,4j],[2,2+4j]] 
+    result=cplane.ListComplexPlane(0,10,2,0,8,2)
+    correct=[[0j], [8j], [(10+0j)], [(10+8j)]]
     assert result==correct
 
     result2=result.apply(f)
-    correct2=[[2,2+4j],[4,4+4j]]
+    correct2=[[[2+2j], [2+10j], [(12+2j)], [(12+10j)]]
     assert result2==correct2
 
 def test_zoom():

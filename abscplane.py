@@ -77,6 +77,7 @@ class AbsComplexPlane(ABC):
     
     # Class attributes, to be set during an __init__
     # The six resolution parameters should be floats
+    #user input parameters
     xmin  = NotImplemented
     xmax  = NotImplemented
     xlen  = NotImplemented
@@ -84,6 +85,8 @@ class AbsComplexPlane(ABC):
     ymax  = NotImplemented
     ylen  = NotImplemented
     # The implementation type of plane is up to the user
+    #self.plane should store grid of numbers ranging from self.min to self.max
+    #list of lists here
     plane = NotImplemented
     # fs should be a list of functions, initialized to be empty
     fs    = NotImplemented
@@ -103,12 +106,11 @@ class AbsComplexPlane(ABC):
     
     @abstractmethod
     def apply(self, f):
-        """Add the function f as the last element of self.fs. 
-        Apply f to every point of the plane, so that the resulting
+        """Add the function f as the last element of self.fs.  Apply f to every point of the plane, so that the resulting
         value of self.plane is the final output of the sequence of
         transformations collected in the list self.fs.
         """
-        pass
+    pass
     
     @abstractmethod
     def zoom(self,xmin,xmax,xlen,ymin,ymax,ylen):
