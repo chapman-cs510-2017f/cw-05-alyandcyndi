@@ -2,7 +2,7 @@
 
 **Author(s): Aly Baughman and Cynthia Parks**
 
-[![Build Status](https://travis-ci.org/chapman-cs510-2017f/cw-05-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-cs510-2017f/cw-05-YOURNAME)
+[![Build Status](https://travis-ci.org/chapman-cs510-2017f/cw-05-alyandcyndi.svg?branch=master)](https://travis-ci.org/chapman-cs510-2017f/cw-05-alyandcyndi)
 
 ## Specification
 
