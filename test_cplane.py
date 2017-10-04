@@ -10,23 +10,29 @@
 ###
 
 import cplane
-
+import numpy as np
 
 def test_cplane():
     result=cplane.ListComplexPlane(0,10,2,0,8,2)
+    print(result)
     correct=[[[0j], [8j]], [[(10+0j)], [(10+8j)]]]
-    assert result==correct
+    print(correct)
+    np.testing.assert_almost_equal(result.plane,correct)
     
 def f(z):
     return z+1
     
 def test_apply():
-    result=cplane.ListComplexPlane(0,10,2,0,8,2)
-    correct=[[[0j], [8j]], [[(10+0j)], [(10+8j)]]]
-    assert result==correct
+    result2=cplane.ListComplexPlane(0,10,2,0,8,2)
+    print(result2)
+    correct2=[[[0j], [8j]], [[(10+0j)], [(10+8j)]]]
+    print(correct2)
+    np.testing.assert_almost_equal(result2.plane,correct2)
 
-    result1=result.apply(f)
-    correct1=[[[1+1j], [1+9j]], [[(11+1j)], [(11+9j)]]]
-    assert result1==correct1
+    result3=result2.apply(f)
+    print(result3)
+    correct3=[[[1+1j], [1+9j]], [[(11+1j)], [(11+9j)]]]
+    print(correct3)    
+    np.testing.assert_almost_equal(result3.plane,correct3)
 
 
