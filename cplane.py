@@ -77,15 +77,11 @@ class ListComplexPlane(AbsComplexPlane):
         ypoints = []
         
         #appends points to the x axis
-        xpoints.append(xmin)
-        
-        for i in range(1, xlen):
+        for i in range(xlen):
             xpoints.append(xmin + i*dx)
             
         #appends points to the y axis
-        ypoints.append(ymin)
-    
-        for i in range(1,ylen):
+        for i in range(ylen):
             ypoints.append(ymin + i*dy)
         #create initial plane list
         plane = []
@@ -94,7 +90,7 @@ class ListComplexPlane(AbsComplexPlane):
         for x in xpoints:
             plane.append([])
             for y in ypoints:
-                plane[-1].append([x + y*1j])
+                plane[-1].append(x + y*1j)
         print(plane)
         return plane
                 
