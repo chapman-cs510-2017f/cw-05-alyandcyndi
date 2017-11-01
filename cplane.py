@@ -43,12 +43,12 @@ class ListComplexPlane(AbsComplexPlane):
             ymax (float): Maximum y value
             ylen (int): Number of vertical points
         """
-        self.xmin = float(xmin)
-        self.xmax = float(xmax)
-        self.xlen = int(xlen)
-        self.ymin = float(ymin)
-        self.ymax = float(ymax)
-        self.ylen = int(ylen)
+        self.xmin = xmin
+        self.xmax = xmax
+        self.xlen = xlen
+        self.ymin = ymin
+        self.ymax = ymax
+        self.ylen = ylen
         self.plane = self.__create_plane(self.xmin, self.xmax, self.xlen, self.ymin, self.ymax, self.ylen)
         self.fs = []
         
@@ -73,16 +73,9 @@ class ListComplexPlane(AbsComplexPlane):
         dy = (ymax - ymin)/(ylen - 1)
         
         #lists of points on the x and y axis
-        xpoints = []
-        ypoints = []
+        xpoints = [xmin +i*dx for i in range(xlen)]
+        ypoints = [ymin +i*dy for i in range(ylen)]
         
-        #appends points to the x axis
-        for i in range(xlen):
-            xpoints.append(xmin + i*dx)
-            
-        #appends points to the y axis
-        for i in range(ylen):
-            ypoints.append(ymin + i*dy)
         #create initial plane list
         plane = []
         #adds the complex numbers to the plane list so that they're
@@ -91,7 +84,6 @@ class ListComplexPlane(AbsComplexPlane):
             plane.append([])
             for y in ypoints:
                 plane[-1].append(x + y*1j)
-        print(plane)
         return plane
                 
         
@@ -107,13 +99,12 @@ class ListComplexPlane(AbsComplexPlane):
         """Adds a function f to the attribute fs.  Then it applies that function to every
            point in the plane.
         """
-        #adds f to fs
-        self.fs.append(f)
-        self.f = f
         #transforms points of the plane
         for i in range(self.xlen):
             for j in range(self.ylen):
                 self.plane[i][j] = f(self.plane[i][j])
+                
+        self.fs.append(f)
         
         
     def zoom(self,xmin,xmax,xlen,ymin,ymax,ylen):
@@ -129,8 +120,9 @@ class ListComplexPlane(AbsComplexPlane):
         self.ylen = ylen
         
         self.plane = self.__create_plane(self.xmin, self.xmax, self.xlen, self.ymin, self.ymax, self.ylen)
+        listfs = list(self.fs)
         #applies the transformations in fs in order
-        for f in self.fs:
+        for f in listfs:
             self.apply(f)
             
         return self.plane
