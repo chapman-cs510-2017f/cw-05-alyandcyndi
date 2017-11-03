@@ -23,8 +23,6 @@
 
 This assignment was very challenging but it definitely helped us learn a lot about classes and how abstract base classes can be useful for programming.  It took a while to get the project started at first but it was fun and interesting to play around with the methods to create the plane successfully.  I know it took me quite a few implementations to get the lists to combine properly.  
 
-**CHANGEME**
-
 ## Honor Pledge
 
 I pledge that all the work in this repository is my own with only the following exceptions:
